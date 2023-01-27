@@ -107,17 +107,9 @@ if __name__ == '__main__':
     for exp_ in experiments:
         if exp_.dataset != dataset_:
             continue
-        train_all_classifiers(exp_)
-
-    # Large
-    for exp_ in experiments:
-        # MODIFY Baseline.runs_classifier_path TO ADD "_LARGE" AT THE END
-        if exp_.dataset != dataset_:
-            continue
-        """exp_.name += '_LARGE'
-        for baseline_ in exp_.baselines:
-            baseline_.exp_name += '_LARGE'"""
+        """# To run LARGE models, uncomment these line and 
+        # modify Baseline.runs_classifier_path to add "_LARGE" at the end
         exp_.cla_model_conf = cla_model_conf_large
         exp_.cla_pre_train_conf.batch_size = CLA_LARGE_BATCH_SIZE
-        exp_.cla_train_conf.batch_size = CLA_LARGE_BATCH_SIZE
+        exp_.cla_train_conf.batch_size = CLA_LARGE_BATCH_SIZE"""
         train_all_classifiers(exp_)

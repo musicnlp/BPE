@@ -97,10 +97,8 @@ class Baseline:
     def load_tokenizer(self):
         if self.tokenization[-3:] == 'PVm' or self.tokenization[-4:] == 'PVDm':
             self.tokenizer = getattr(tokenizers_, self.tokenization)(params=self.data_path / 'config.txt')
-        elif self.bpe_factor == 0:
-            self.tokenizer = getattr(miditok, self.tokenization)(params=self.data_path / 'config.txt')
         else:
-            self.tokenizer = miditok.bpe(getattr(miditok, self.tokenization), params=self.data_path / 'config.txt')
+            self.tokenizer = getattr(miditok, self.tokenization)(params=self.data_path / 'config.txt')
 
     @property
     def data_path(self) -> Path: return Path('data', f'{self.exp_name}' + (f'_{self.name}' if self.name != '' else ''))

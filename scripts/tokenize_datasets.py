@@ -217,53 +217,14 @@ if __name__ == '__main__':
                 previous_is_bpe = False
             else:  # BPE
                 if not previous_is_bpe:  # happens only first time
-                    tokenizr = miditok.bpe(getattr(miditok, baseline.tokenization), **exp.tokenizer_params)
+                    tokenizr = getattr(miditok, baseline.tokenization)(**exp.tokenizer_params)
                     base_tokens_path = Path('data', f'{exp.dataset}_{baseline.tokenization}')
                     first_len = len(tokenizr)
 
                 seed_everything(exp.seed)  # for file lim random selection
                 base_tokens_path = previous_bpe_path
-                tokenizr.bpe(base_tokens_path, first_len * baseline.bpe_factor, baseline.data_path,
-                             files_lim=BPE_NB_FILES_LIM)
+                tokenizr.learn_bpe(base_tokens_path, first_len * baseline.bpe_factor, baseline.data_path,
+                                   files_lim=BPE_NB_FILES_LIM)
                 tokenizr.apply_bpe_to_dataset(base_tokens_path, baseline.data_path)
                 previous_is_bpe = True  # no need to recreate tokenizer
                 previous_bpe_path = baseline.data_path
-
-        '''# First tokenize MIDI dataset without BPE, and apply data augmentation
-        tokenizr = getattr(miditok, exp.baselines[0].tokenization)(**exp.tokenizer_params)
-        in_tokens_path = noBPE_tokens_path = Path('data', f'{exp.name}_noBPE')
-        if not in_tokens_path.exists():
-            tokenize_dataset(tokenizr, exp.real_data_path, in_tokens_path)
-
-        # Learn and apply BPE
-        first_len = len(tokenizr)
-        for bi, baseline in enumerate(exp.baselines):
-            if baseline.bpe_factor == 0:
-                continue
-            if (out_path := baseline.data_path).exists():
-                continue
-            print(out_path)
-            if exp.baselines[bi-1].bpe_factor == 0:
-                tokenizr = miditok.bpe(getattr(miditok, exp.tokenization), **exp.tokenizer_params)
-            else:
-                in_tokens_path = exp.baselines[bi - 1].data_path  # loads last bpe checkpoint, uses last bpe tokens
-                tokenizr = miditok.bpe(getattr(miditok, exp.tokenization), params=in_tokens_path / 'config.txt')
-            seed_everything(exp.seed)
-            tokenizr.bpe(in_tokens_path, first_len * baseline.bpe_factor, out_path, files_lim=BPE_NB_FILES_LIM)
-            tokenizr.apply_bpe_to_dataset(Path('data', noBPE_tokens_path), out_path)'''
-
-        '''# Other token combination methods
-        for tokenization in ['PVm', 'PVDm']:
-            if (out_path := Path('data', f'{exp.name}_{tokenization}')).exists():
-                continue
-            tokenizr = getattr(tokenizers_, tokenization)(**experiments[0].tokenizer_params)
-            tokenize_dataset(tokenizr, exp.real_data_path, out_path)'''
-
-    '''# CPWord and Octuple
-    for dataset in datasets:
-        for tokenization, pitch_voc_idx_ in [('CPWord', 2), ('OctupleMono', 0)]:
-            if tokenization == 'OctupleMono':
-                dataset = f'{dataset}-short'
-            out_path = Path('data', f'{dataset}_{tokenization}')
-            tokenizr = getattr(miditok, tokenization)(**experiments[0].tokenizer_params)
-            tokenize_dataset(tokenizr, Path('data', dataset), out_path)'''

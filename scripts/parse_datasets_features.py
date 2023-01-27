@@ -16,7 +16,7 @@ from tqdm import tqdm
 from torchtoolkit.utils import seed_everything
 import numpy as np
 
-from experiments import experiments, datasets
+from exp_gen import experiments, datasets
 from tokenize_datasets import is_midi_valid
 from constants import PITCH_RANGE, TOKENIZER_PARAMS
 from metrics import Consistency, OnsetInterval, NoteDensity, NoteDensityEvolution
@@ -99,26 +99,24 @@ if __name__ == '__main__':
         onset_intervals = dists['onset_intervals']'''
 
     # plot distributions
-    for feature, feature_name in [(pitches, 'pitches'), (durations, 'durations'), (velocities, 'velocities'),
-                                  (onsets, 'onsets'), (onset_intervals, 'onset_intervals')]:
+    for feature, feature_name in [(pitches, 'pitch'), (durations, 'duration'), (velocities, 'velocity'),
+                                  (onsets, 'onset'), (onset_intervals, 'onset_interval')]:
         plt.figure(figsize=(5, 3))
         logger.debug(f'\n{feature_name}')
         for dataset in datasets:
-            if feature_name == 'tempos' and dataset in ['JSB', 'POP909_melody']:
-                continue
             logger.debug(f'{dataset}: {np.mean(feature[dataset]):.2f} ± {np.std(feature[dataset]):.2f}')
-            sns.kdeplot(feature[dataset], label=dataset, fill=True)
+            sns.kdeplot(feature[dataset], label=dataset if dataset != 'POP909-merged' else 'POP909', fill=True)
 
         # formatting
-        plt.legend(title='Dataset', loc='upper left' if feature_name == 'velocities' else 'upper right')  # fontsize=10
+        plt.legend(title='Dataset', loc='upper left' if feature_name == 'velocity' else 'upper right')  # fontsize=10
         plt.xlabel(feature_name)
         plt.ylabel('density')
         # plt.title(f'{feature} distributions')
         # plt.xlabel(feature)
 
-        if feature_name == 'pitches':
+        if feature_name == 'pitch':
             plt.xlim(PITCH_RANGE.start, PITCH_RANGE.stop)
-        elif feature_name == 'durations':
+        elif feature_name == 'duration':
             plt.xlim(0, 7)
         elif feature_name == 'onset_interval':
             plt.xlim(0, 4)

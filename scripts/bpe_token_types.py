@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from experiments import experiments
+from exp_gen import experiments
 
 
 if __name__ == '__main__':

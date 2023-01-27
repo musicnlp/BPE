@@ -18,7 +18,7 @@ from tqdm import tqdm
 
 from classes import Experiment
 from dataset import MIDIDatasetClassification
-from experiments import experiments, cla_model_conf_large
+from exp_gen import experiments, cla_model_conf_large
 from training import train_classifier
 from constants import RANDOM_RATIO_RANGE, MAX_NB_COMPOSERS, CLA_LARGE_BATCH_SIZE
 

@@ -12,7 +12,7 @@ from miditoolkit import MidiFile
 from torchtoolkit.utils import seed_everything
 from tqdm import tqdm
 
-from experiments import experiments
+from exp_gen import experiments
 from scripts.utils import mean_std, reduce_list
 
 

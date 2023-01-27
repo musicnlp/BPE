@@ -10,7 +10,7 @@ from torch import Tensor, cat, mean, max as max_pt
 from torchtoolkit.utils import seed_everything
 from tqdm import tqdm
 
-from experiments import experiments
+from exp_gen import experiments
 
 
 if __name__ == '__main__':

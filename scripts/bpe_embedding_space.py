@@ -1,7 +1,6 @@
 #!/usr/bin/python3 python
 
 """Plots cosine sim of embeddings of BPE experiments
-
 """
 from pathlib import Path
 import logging
@@ -22,7 +21,7 @@ from skdim.id import lPCA, MLE, MOM, TLE, TwoNN, FisherS
 from IsoScore import IsoScore
 from tqdm import tqdm
 
-from experiments import experiments
+from exp_gen import experiments
 from classes import Baseline
 from constants import MAX_NB_COMPOSERS
 
@@ -116,7 +115,7 @@ def plot_points_3d(points, token_types: dict, out_path: Path):
     for token_type, indices in token_types.items():
         ax.scatter(*points[indices].T, label=token_type)
     # Then BPE by type successions + others
-    plt.legend().set_zorder(100)
+    plt.legend(prop={'size': 8}).set_zorder(100)
     plt.savefig(out_path, bbox_inches='tight', dpi=300)
     fig.clf()
 
@@ -163,7 +162,6 @@ class TokenIterator:
             1. Number of steps: will be iterated a fixed number of times
             2. Min valid accuracy: will be iterated till the model reaches a target validation
                 accuracy value, or if the number of training steps exceeds max_nb_steps.
-
         :param batch_size: batch size
         :param tokenizer: tokenizer
         :param embed_pooling_nb_embed: maximum nb of token combinations to use for embedding pooling tokenizations
@@ -236,6 +234,7 @@ class TokenIterator:
 
 
 if __name__ == '__main__':
+    # from comp_classification import cla_model_conf_large
     batch_size_ = 20000
     device = select_device(True)  # CUDA
 
@@ -256,6 +255,7 @@ if __name__ == '__main__':
         isoscores = []
 
         for exp in tqdm(experiments):
+            # exp.cla_model_conf = cla_model_conf_large
             if (model_typ == 'cla_pt' and exp.dataset != 'GiantMIDI') or \
                     (model_typ == 'gen' and exp.name[-5:] == 'LARGE'):
                 continue  # classification only on GiantMIDI dataset
@@ -373,7 +373,10 @@ if __name__ == '__main__':
                                                            (model_typ == 'cla_pt' and exp.name[-5:] != 'LARGE')):
                 ax1.set_ylabel('Dimension')
             labs = [line.get_label() for line in lns]
-            ax1.legend(lns, labs, loc=0, prop={'size': 8})
+            if model_typ == 'cla_pt':
+                ax2.legend(lns, labs, loc=0, prop={'size': 8})
+            else:
+                ax1.legend(lns, labs, loc=0, prop={'size': 8})
             # plt.legend(prop={'size': 8})
             plt.savefig(out_dir / f'intrinsic_dim_{exp.name}.pdf', bbox_inches='tight', dpi=300)
             fig_.clf()

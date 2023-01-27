@@ -14,7 +14,7 @@ from tqdm import tqdm
 from torchtoolkit.utils import seed_everything
 import numpy as np
 
-from experiments import experiments, datasets
+from exp_gen import experiments, datasets
 from tokenize_datasets import is_midi_valid
 from constants import TOKENIZER_PARAMS, CONSISTENCY_WINDOWS_LEN
 from metrics import notes_density, overlapping_area_hist, overlapping_area_kde, TokenComprehension, consistency,\

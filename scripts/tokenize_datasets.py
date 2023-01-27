@@ -189,7 +189,7 @@ def tokenize_dataset(tokenizer: miditok.MIDITokenizer, data_dir: Path, out_dir: 
 
 
 if __name__ == '__main__':
-    from experiments import experiments
+    from exp_gen import experiments
 
     '''import json  # to test PVm / PVDm data augmentation
     json_files = list(Path('data', 'POP909-merged_TSD_PVm').glob('**/*.json'))

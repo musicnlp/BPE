@@ -13,7 +13,7 @@ import numpy as np
 from miditok import MIDITokenizer
 import seaborn as sns
 
-from experiments import experiments
+from exp_gen import experiments
 from scripts.utils import get_token_dist, mean_std
 
 

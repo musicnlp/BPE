@@ -9,7 +9,7 @@ import logging
 
 import numpy as np
 
-from experiments import experiments
+from exp_gen import experiments
 from metrics import overlapping_area_hist
 
 

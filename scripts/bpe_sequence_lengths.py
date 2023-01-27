@@ -13,7 +13,7 @@ from torchtoolkit.utils import seed_everything
 from miditok import MIDITokenizer
 from miditoolkit import MidiFile
 
-from experiments import experiments, bpe_factors
+from exp_gen import experiments, bpe_factors
 from scripts.utils import reduce_list
 
 

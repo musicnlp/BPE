@@ -35,7 +35,7 @@ We refer you to the tables of the paper.
 
 <img src="figures/singular_value_gen/singular_value_POP909-merged_TSD.png" alt="POP909 TSD" width="200"/><img src="figures/singular_value_gen/singular_value_POP909-merged_REMI.png" alt="POP909 REMI" width="200"/><img src="figures/singular_value_gen/singular_value_GiantMIDI_TSD.png" alt="GiantMIDI TSD" width="200"/><img src="figures/singular_value_gen/singular_value_GiantMIDI_REMI.png" alt="GiantMIDI REMI" width="200"/>
 
-#### Classifiers : Cla$\_{small}$ TSD, Cla$\_{small}$ REMI, Cla$\_{large}$ TSD and Cla$\_{large}$ REMI
+#### Classifiers : $\mathrm{Cla}\_{small}$ TSD, $\mathrm{Cla}\_{small}$ REMI, $\mathrm{Cla}\_{large}$ TSD and $\mathrm{Cla}\_{large}$ REMI
 
 <img src="figures/singular_value_cla/singular_value_GiantMIDI_TSD.png" alt="Cla small TSD" width="200"/><img src="figures/singular_value_cla/singular_value_GiantMIDI_REMI.png" alt="Cla small REMI" width="200"/><img src="figures/singular_value_cla/singular_value_GiantMIDI_TSD_LARGE.png" alt="Cla large TSD" width="200"/><img src="figures/singular_value_cla/singular_value_GiantMIDI_REMI_LARGE.png" alt="Cla large REMI" width="200"/>
 
@@ -70,7 +70,7 @@ Figures are by order for no BPE, BPEx4, BPEx10, BPEx20, BPEx50, BPEx100, PVm and
 
 ### UMAP Classifiers
 
-These figures are for Cla$\_{small}$ and TSD. More figures can be found in [figures](./figures).
+These figures are for $\mathrm{Cla}\_{small}$ and TSD. More figures can be found in [figures](./figures).
 
 <img src="figures/umap_2d_cla/umap_2d_GiantMIDI_TSD_noBPE.png" alt="No BPE" width="200"/><img src="figures/umap_2d_cla/umap_2d_GiantMIDI_TSD_bpe4.png" alt="BPEx4" width="200"/><img src="figures/umap_2d_cla/umap_2d_GiantMIDI_TSD_bpe10.png" alt="BPEx10" width="200"/><img src="figures/umap_2d_cla/umap_2d_GiantMIDI_TSD_bpe20.png" alt="BPEx20" width="200"/>
 
@@ -82,6 +82,6 @@ These figures are for Cla$\_{small}$ and TSD. More figures can be found in [figu
 
 <img src="figures/intrinsic_dimension_gen/intrinsic_dim_POP909-merged_TSD.png" alt="POP909 TSD" width="200"/><img src="figures/intrinsic_dimension_gen/intrinsic_dim_POP909-merged_REMI.png" alt="POP909 REMI" width="200"/><img src="figures/intrinsic_dimension_gen/intrinsic_dim_GiantMIDI_TSD.png" alt="GiantMIDI TSD" width="200"/><img src="figures/intrinsic_dimension_gen/intrinsic_dim_GiantMIDI_REMI.png" alt="GiantMIDI REMI" width="200"/>
 
-#### Classifiers : Cla$\_{small}$ TSD, Cla$\_{small}$ REMI, Cla$\_{large}$ TSD and Cla$\_{large}$ REMI
+#### Classifiers : $\mathrm{Cla}\_{small}$ TSD, $\mathrm{Cla}\_{small}$ REMI, $\mathrm{Cla}\_{large}$ TSD and $\mathrm{Cla}\_{large}$ REMI
 
 <img src="figures/intrinsic_dimension_cla/intrinsic_dim_GiantMIDI_TSD.png" alt="Cla small TSD" width="200"/><img src="figures/intrinsic_dimension_cla/intrinsic_dim_GiantMIDI_REMI.png" alt="Cla small REMI" width="200"/><img src="figures/intrinsic_dimension_cla/intrinsic_dim_GiantMIDI_TSD_LARGE.png" alt="Cla large TSD" width="200"/><img src="figures/intrinsic_dimension_cla/intrinsic_dim_GiantMIDI_REMI_LARGE.png" alt="Cla large REMI" width="200"/>
